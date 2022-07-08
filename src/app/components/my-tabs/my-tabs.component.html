@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs">
+  <li
+    class="nav-item"
+    *ngFor="let tab of openedTabs"
+    (click)="onChangeTab(tab)"
+  >
+    <a
+      class="nav-link d-flex align-items-center justify-content-center gap-3 px-2"
+      [ngClass]="{ active: currentTab?.id === tab.id }"
+      href="#"
+      >{{ tab.label }}
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="onCloseTab(tab)"
+      ></button
+    ></a>
+  </li>
+</ul>
+<div class="container-fluid">
+  <ng-container *ngFor="let tab of openedTabs">
+    <div [id]="tab.htmlId" [hidden]="currentTab?.id !== tab.id"></div>
+  </ng-container>
+</div>
